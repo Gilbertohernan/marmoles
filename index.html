@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico"><link rel="icon" type="image/x-icon" href="glog.ico">
+<title>GHBT • Patrones y Mármoles Premium</title>
+
+<style>
+
+:root{
+    --bg:#eef2f7;
+    --card:#ffffff;
+    --text:#1f2937;
+    --shadow:rgba(0,0,0,.15);
+}
+
+body.dark{
+    --bg:#101418;
+    --card:#1c232c;
+    --text:#f1f5f9;
+    --shadow:rgba(0,0,0,.5);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    transition:.4s;
+    padding:30px;
+}
+
+/* CABECERA */
+
+header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+h1{
+    font-size:2.8rem;
+    margin-bottom:10px;
+}
+
+.subtitulo{
+    opacity:.8;
+}
+
+.controles{
+    margin-top:20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+button{
+    padding:10px 18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.color-control{
+    width:60px;
+    height:40px;
+    border:none;
+    background:none;
+    cursor:pointer;
+}
+
+/* GALERÍA */
+
+.galeria{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+}
+
+/* TARJETAS */
+
+.card{
+    background:var(--card);
+    border-radius:24px;
+    padding:20px;
+    text-align:center;
+    font-weight: bold;
+    font-size: 18px;
+    overflow:hidden;
+
+    position:relative;
+
+    box-shadow:
+        0 10px 30px var(--shadow);
+
+    transition:.4s;
+}
+
+.card:hover{
+    transform:
+        translateY(-8px)
+        scale(1.02);
+}
+
+/* EFECTO BRILLO */
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-150%;
+    top:0;
+
+    width:60%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.6),
+        transparent
+    );
+
+    transition:1s;
+}
+
+.card:hover::before{
+    left:160%;
+}
+
+.card h2{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+/* VISTA MUESTRA */
+
+.muestra{
+    width:100%;
+    height:220px;
+    border-radius:15px;
+}
+
+/* ======================
+   PATRONES
+====================== */
+
+.p1{
+ background:
+ linear-gradient(
+ 45deg,
+ transparent 50%,
+ var(--patronColor,#4964d6) 50%);
+}
+
+.p2{
+ background:
+ repeating-linear-gradient(
+ 45deg,
+
+ var(--patronColor,#ff3b3b) 0,
+ var(--patronColor,#ff3b3b) 20px,
+
+ #000 20px,
+ #000 40px
+ );
+}
+
+.p3{
+ background-color:#202020;
+
+ background-image:
+ linear-gradient(
+ black .15rem,
+ transparent .15rem),
+
+ linear-gradient(
+ 90deg,
+ black .15rem,
+ transparent .15rem);
+
+ background-size:4rem 4rem;
+}
+
+.p4{
+
+ background:
+ linear-gradient(
+ 315deg,
+ transparent 75%,
+ gold 0) -15px 0,
+
+ linear-gradient(
+ 45deg,
+ transparent 75%,
+ gold 0) 15px 0,
+
+ linear-gradient(
+ 135deg,
+ #836e17 50%,
+ transparent 0),
+
+ linear-gradient(
+ 45deg,
+ #584a0f 50%,
+ #2c2508 0);
+
+ background-size:30px 30px;
+}
+
+.p5{
+
+ background:
+ repeating-conic-gradient(
+ #843827 0% 25%,
+ white 0% 50%
+ );
+
+ background-size:80px 80px;
+}
+.p6{
+
+background-image: linear-gradient(55deg, rgba(40, 40, 40, 0.09) 0%, rgba(40, 40, 40, 0.09) 50%,rgba(186, 186, 186, 0.09) 50%, rgba(186, 186, 186, 0.09) 100%),linear-gradient(116deg, rgba(156, 156, 156, 0.07) 0%, rgba(156, 156, 156, 0.07) 50%,rgba(77, 77, 77, 0.07) 50%, rgba(77, 77, 77, 0.07) 100%),linear-gradient(57deg, rgba(73, 73, 73, 0.07) 0%, rgba(73, 73, 73, 0.07) 50%,rgba(44, 44, 44, 0.07) 50%, rgba(44, 44, 44, 0.07) 100%),linear-gradient(103deg, rgba(187, 187, 187, 0.1) 0%, rgba(187, 187, 187, 0.1) 50%,rgba(10, 10, 10, 0.1) 50%, rgba(10, 10, 10, 0.1) 100%),linear-gradient(42deg, rgba(200, 200, 200, 0.08) 0%, rgba(200, 200, 200, 0.08) 50%,rgba(58, 58, 58, 0.08) 50%, rgba(58, 58, 58, 0.08) 100%),linear-gradient(211deg, rgba(160, 160, 160, 0.1) 0%, rgba(160, 160, 160, 0.1) 50%,rgba(73, 73, 73, 0.1) 50%, rgba(73, 73, 73, 0.1) 100%),linear-gradient(48deg, rgba(7, 7, 7, 0.09) 0%, rgba(7, 7, 7, 0.09) 50%,rgba(69, 69, 69, 0.09) 50%, rgba(69, 69, 69, 0.09) 100%),linear-gradient(15deg, rgba(172, 172, 172, 0.07) 0%, rgba(172, 172, 172, 0.07) 50%,rgba(105, 105, 105, 0.07) 50%, rgba(105, 105, 105, 0.07) 100%),linear-gradient(154deg, rgba(220, 220, 220, 0.02) 0%, rgba(220, 220, 220, 0.02) 50%,rgba(134, 134, 134, 0.02) 50%, rgba(134, 134, 134, 0.02) 100%),linear-gradient(90deg, rgb(64, 80, 215),rgb(13, 206, 230));
+
+ background-size:100% 100%;
+}
+.p7{
+
+background-image: radial-gradient(circle at 4% 15%, #eee 0%, #eee 1.5%, transparent calc(1.5% + 1px), transparent 100%), radial-gradient(circle at 4% 50%, #eee 0%, #eee 1.5%, transparent calc(1.5% + 1px), transparent 100%), radial-gradient(circle at 4% 85%, #eee 0%, #eee 1.5%, transparent calc(1.5% + 1px), transparent 100%), linear-gradient(90deg, transparent 0%, transparent 10%, #DB676C 10%, #DB676C calc(10% + 2px), transparent calc(10% + 2px), transparent 100%), linear-gradient(180deg, white 12%, transparent 12%), repeating-linear-gradient(180deg, #91C1E1 0px, #91C1E1 1px, transparent 1px, transparent 30px), linear-gradient(white,white);
+}
+.p8{
+background-image: repeating-linear-gradient(297deg, rgba(32,161,189, 0.97) 0px,transparent 2px,rgba(32,161,189, 0.97) 7px,transparent 9px,rgba(32,161,189, 0.97) 14px,transparent 16px,rgba(32,161,189, 0.97) 21px),repeating-linear-gradient(59deg, rgba(32,161,189, 0.97) 0px,transparent 2px,rgba(32,161,189, 0.97) 7px,transparent 9px,rgba(32,161,189, 0.97) 14px,transparent 16px,rgba(32,161,189, 0.97) 21px),repeating-linear-gradient(0deg, rgba(32,161,189, 0.97) 0px,transparent 2px,rgba(32,161,189, 0.97) 7px,transparent 9px,rgba(32,161,189, 0.97) 14px,transparent 16px,rgba(32,161,189, 0.97) 21px),linear-gradient(90deg, rgb(253,253,253),rgb(253,253,253));
+}
+.p9{
+background-image: repeating-linear-gradient(297deg, rgba(189,119,32, 0.93) 0px,transparent 2px,rgba(189,119,32, 0.93) 7px,transparent 9px,rgba(189,119,32, 0.93) 14px,transparent 16px,rgba(189,119,32, 0.93) 21px),repeating-linear-gradient(59deg, rgba(189,119,32, 0.93) 0px,transparent 2px,rgba(189,119,32, 0.93) 7px,transparent 9px,rgba(189,119,32, 0.93) 14px,transparent 16px,rgba(189,119,32, 0.93) 21px),repeating-linear-gradient(0deg, rgba(189,119,32, 0.93) 0px,transparent 2px,rgba(189,119,32, 0.93) 7px,transparent 9px,rgba(189,119,32, 0.93) 14px,transparent 16px,rgba(189,119,32, 0.93) 21px),linear-gradient(90deg, rgb(253,253,253),rgb(253,253,253));
+}
+.confetti{
+background-image: repeating-linear-gradient(135deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px,transparent 10px, transparent 11px),repeating-linear-gradient(22.5deg, rgb(0,0,0) 0px, rgb(0,0,0) 10px,transparent 10px, transparent 11px),linear-gradient(90deg, hsl(194,74%,56%),hsl(266,74%,56%),hsl(338,74%,56%),hsl(50,74%,56%),hsl(122,74%,56%));
+}
+.imagen{
+ background:
+        linear-gradient(
+            135deg,
+            rgba(255, 0, 128, 0.6),
+            rgba(0, 128, 255, 0.6)
+        ),
+        url("alviento.png");
+
+    background-size: cover;
+    background-position: center;
+}
+.imagen1{
+ background:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, .2),
+            rgba(255, 150, 0, .5) 50%
+        ),
+        url("alviento.png");
+
+    background-size: cover;
+    background-position: center;
+}
+/* ======================
+   MÁRMOL BLANCO
+====================== */
+
+.blanco{
+ background:
+ radial-gradient(circle at 20% 30%,
+ rgba(255,255,255,.8),transparent 30%),
+
+ radial-gradient(circle at 80% 70%,
+ rgba(255,255,255,.5),transparent 25%),
+
+ linear-gradient(
+ 135deg,#fafafa,
+ #dfdfdf,
+ #efefef);
+}
+
+.blanco::before{
+ content:"";
+ position:absolute;
+ inset:0;
+
+ background:
+ repeating-linear-gradient(
+ 115deg,
+ transparent 0,
+ transparent 20px,
+ rgba(80,80,80,.08) 22px,
+ rgba(80,80,80,.08) 24px,
+ transparent 28px
+ );
+}
+
+/* ======================
+   NEGRO
+====================== */
+
+.negro{
+
+ background:
+ linear-gradient(
+ 135deg,
+ #020202,
+ #1a1a1a,
+ #313131);
+}
+
+.negro::before{
+
+ content:"";
+ position:absolute;
+ inset:0;
+
+ background:
+ repeating-linear-gradient(
+ 120deg,
+ transparent 0,
+ transparent 30px,
+
+ rgba(255,255,255,.15) 32px,
+ rgba(255,255,255,.15) 34px,
+
+ transparent 36px
+ );
+}
+
+/* ======================
+   PREMIUM
+====================== */
+
+.premium{
+
+ background:
+ radial-gradient(
+ circle at 20% 20%,
+ white,
+ #ececec,
+ #dddddd
+ );
+}
+
+.premium::before{
+
+ content:"";
+ position:absolute;
+ inset:0;
+
+ background:
+ repeating-linear-gradient(
+ 120deg,
+
+ transparent 0,
+ transparent 25px,
+
+ rgba(90,90,90,.07) 27px,
+ rgba(90,90,90,.07) 29px,
+
+ transparent 32px
+ );
+
+ animation:veta 15s infinite linear alternate;
+}
+
+@keyframes veta{
+
+ from{
+  transform:translateX(-20px);
+ }
+
+ to{
+  transform:translateX(20px);
+ }
+
+}
+
+/* ======================
+   DORADO
+====================== */
+
+.dorado{
+
+ background:
+ linear-gradient(
+ 135deg,
+ #fff,
+ #efefef,
+ #dcdcdc);
+}
+
+.dorado::before{
+
+ content:"";
+ position:absolute;
+ inset:0;
+
+ background:
+ repeating-linear-gradient(
+ 135deg,
+
+ transparent 0,
+ transparent 40px,
+
+ rgba(212,175,55,.8) 41px,
+ rgba(212,175,55,.8) 43px,
+
+ transparent 50px
+ );
+}
+.nuevo
+{
+  background:
+ linear-gradient(
+ 135deg,
+ #fff,
+ #efefef,
+ #dcdcdc);   
+}
+footer{
+    text-align:center;
+    margin-top:40px;
+    font-weight:bold;
+    opacity:.7;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>❉ GHBT Material Studio ❉</h1>
+
+<p class="subtitulo">
+Galería interactiva de patrones y mármoles CSS
+</p>
+
+<div class="controles">
+
+<button id="tema">
+🌙 Modo Oscuro
+</button>
+
+<label>
+🎨
+<input
+type="color"
+id="colorPicker"
+class="color-control"
+value="#4964d6">
+</label>
+
+</div>
+
+</header>
+
+<section class="galeria">
+
+<div class="card">1
+<h2>Diagonal</h2>
+<div class="muestra p1"></div>
+</div>
+
+<div class="card">2
+<h2>Industrial</h2>
+<div class="muestra p2"></div>
+</div>
+
+<div class="card">3
+<h2>Cuadrícula</h2>
+<div class="muestra p3"></div>
+</div>
+
+<div class="card">4
+<h2>Dorado</h2>
+<div class="muestra p4"></div>
+</div>
+
+<div class="card">5
+<h2>Ajedrez</h2>
+<div class="muestra p5"></div>
+</div>
+
+<div class="card">6
+<h2>Mármol Blanco</h2>
+<div class="muestra blanco"></div>
+</div>
+
+<div class="card">7
+<h2>Mármol Negro</h2>
+<div class="muestra negro"></div>
+</div>
+
+<div class="card">8
+<h2>Mármol Premium</h2>
+<div class="muestra premium"></div>
+</div>
+
+<div class="card">9
+<h2>Mármol Dorado</h2>
+<div class="muestra dorado"></div>
+</div>
+<div class="card">10
+<h2>Nuevo</h2>
+<div class="muestra p6"></div>
+</div>
+<div class="card">11
+<h2>Hoja de cuaderno</h2>
+<div class="muestra p7">
+<svg width="300" height="200" style="border:0px dashed black" xmlns="http://www.w3.org/2000/svg">
+ <g id="Layer_1">
+  <title>Layer 1</title>
+  <ellipse stroke-width="12" ry="50" rx="50" id="svg_6" cy="88" cx="71" stroke="#843827" fill="#843827" stroke-dasharray="10,5"/>
+ </g>
+
+</svg>
+</div>
+</div>
+<div class="card">12
+<h2>Tejido de maya</h2>
+<div class="muestra p8"></div>
+</div>
+
+<div class="card">13
+<h2>Tejido de maya</h2>
+<div class="muestra p9"></div>
+</div>
+<div class="card">14
+<h2>Confetti</h2>
+<div class="muestra confetti"></div>
+</div>
+<div class="card">15
+<h2>Imagen</h2>
+<div class="muestra imagen"><p style="color: white; font-size: 12px;position:absolute; top: 285px; right: 45px">GHBT</p></div>
+</div>
+<div class="card">16
+<h2>Imagen</h2>
+<div class="muestra imagen1"></div>
+</div>
+</section>
+
+<footer>
+GHBT • Maravilloso aprendizaje • CSS Creativo •"No envejece quien sigue aprendiendo."
+</footer>
+
+<script>
+
+const temaBtn =
+document.getElementById("tema");
+
+temaBtn.addEventListener("click",()=>{
+
+ document.body.classList.toggle("dark");
+
+ temaBtn.textContent =
+ document.body.classList.contains("dark")
+ ? "☀️ Modo Claro"
+ : "🌙 Modo Oscuro";
+});
+
+const picker =
+document.getElementById("colorPicker");
+
+picker.addEventListener("input",(e)=>{
+
+ document.documentElement.style.setProperty(
+ "--patronColor",
+ e.target.value
+ );
+
+});
+
+</script>
+
+</body>
+</html>
